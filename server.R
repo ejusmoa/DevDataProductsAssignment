@@ -25,15 +25,12 @@ shinyServer(function(input, output) {
                 g
         })
         
-        ToothGrowth05<-filter(ToothGrowth, dose==0.5)
-        ToothGrowth1<-filter(ToothGrowth, dose==1)
-        ToothGrowth2<-filter(ToothGrowth, dose==2)
-    
         test_groups <- reactive({
                 if (input$delivery=="Orange juice (OJ)")
                         method="OJ"
                 else
                         method="VC"
+                
                 if (input$dose1 != input$dose2){
                         
                         if (input$dose1!=2 & input$dose2!=2 ){
@@ -53,12 +50,10 @@ shinyServer(function(input, output) {
                 }
                 else{
                                 
-                        result <- "dose 1 and dose 2 cannot be equal"            
+                        result <- "Dose 1 and dose 2 must be different."            
                 }
 
                 
         })
-        
         output$text1 <- renderText(test_groups())
-        
 })

@@ -8,25 +8,25 @@ shinyUI(fluidPage(
            acid (a form of vitamin C and coded as VC)."),
         h5("First of all, the user can take a look at the distribution of tooth growth
            grouped by either delivery method or dose."),
-        h5("Then, A delivery method has to be selected."),
+        h5("Then, a delivery method has to be selected."),
         h5("Finally, two different doses have to be selected to compare the tooth growth
            between different doses with same delivery method."),
-        h5("The T statistic and P-value for the test with the parameters entered are displayed."),
+        h5("The T statistic and P-value for the test are displayed."),
         sidebarLayout(
                 sidebarPanel(
                         selectInput("distribution", "Tooth growth distribution grouped by",
                                     c("Delivery method","Dose")),
                         selectInput("delivery", "Select a delivery method",
                                     c("Orange juice (OJ)","Ascorbic acid (VC)")),
-                        radioButtons("dose1", "Select the first dose:",
+                        radioButtons("dose1", "Select the first dose (mg/day):",
                                      c(0.5,1,2)),
-                        radioButtons("dose2", "Select the second dose:",
+                        radioButtons("dose2", "Select the second dose (mg/day):",
                                      c(0.5,1,2))
                 ),
                 mainPanel(
                         h3("Tooth growth distribution"),
                         plotOutput("plot1"),
-                        h3("Test outputs"),
+                        h3("Test results"),
                         textOutput("text1")
                 )
         )
